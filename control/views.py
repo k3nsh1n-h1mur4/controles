@@ -6,6 +6,7 @@ import pandas as pd
 from openpyxl import Workbook
 from .connection import Connection
 
+from django.urls import reverse
 from django.core.paginator import Paginator
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import AuthenticationForm
@@ -14,7 +15,8 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.views import LoginView, LogoutView
 
-from .forms import RegistrationForm, loginForm, ValidateMatriculaForm, ValidateTelefonoForm
+import control.views
+from .forms import RegistrationForm, loginForm, ValidateMatriculaForm, ValidateTelefonoForm, EstructuraEdicionForm
 from .models import User
 
 # Create your views here.
@@ -35,10 +37,12 @@ def register(request):
             is_superuser = form.cleaned_data['is_superuser']
             print(username, password, is_staff, is_active, is_superuser)
             user = User.objects.create_user(username=username, password=password, email=email, is_staff=is_staff, is_active=is_active, is_superuser=is_superuser)
+
             if user:
-                login(request)
-                print(user.id)
-                return redirect('creado')
+                print(user)
+        return redirect('index')
+                #login(request)
+                
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form, 'title': title, 'error': error})
@@ -46,12 +50,16 @@ def register(request):
 def login(request):
     title = 'Login'
     error = None
-    #form = loginForm(request.POST or None)
+    form = AuthenticationForm()
+
+    """
+    form = loginForm(request.POST or None)
     if request.method == 'POST':
         user = User.objects.get(username=request.POST['username'])
+        print(user)
         if user.check_password(request.POST['password']):
             request.session['_auth_user_id'] = user.id
-            return redirect('ValidateMatricula')
+            return redirect('register')
         else:
             return HttpResponse('Invalid username or password')
         username = request.POST.get('username')
@@ -60,6 +68,8 @@ def login(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             login(request)
+    """
+
     return render(request, 'login.html', {'form': form, 'title': title, 'error': error})
 
 
@@ -69,7 +79,8 @@ def user_logout(request):
     print(request.session.get('_auth_user_id'))
     print(request.session.values())
     if request.method == 'POST':
-        request.session.pop('_auth_user_id', None)
+        request.session.pop('_auth_user_id', '')
+        request.session.pop('_auth_user_hash', '')
         request.session.clear()
         request.session['_auth_user_id'] = None
         logout(request)

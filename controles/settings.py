@@ -125,7 +125,8 @@ STATIC_URL = 'static/'
 STATIC_ROOT = 'staticfiles/'
 
 STATICFILES_DIRS = [
-    "/Users/k3nsh1n/Dev/controles/static",
+    #"/Users/k3nsh1n/Dev/controles/static", 
+    "C:/Users/jazyi/Dev/django/controles/static",
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
