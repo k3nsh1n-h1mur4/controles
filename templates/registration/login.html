@@ -5,8 +5,6 @@
  {% endblock %}
 
  
-
-
  {% block content %}
 
  {% if form.errors %}
@@ -15,30 +13,35 @@
  
  {% if next %}
      {% if user.is_authenticated %}
-     <p>Your account doesn't have access to this page. To proceed,
+     <p>Your account doesn't have access to this p  age. To proceed,
      please login with an account that has access.</p>
      {% else %}
      <p>Please login to see this page.</p>
      {% endif %}
  {% endif %}
+
+<div id="login-header">
+    <h1>Estructura 2025-2031</h1>    
+</div>
+
+ <div id="login-form">
+ <form method="post" action="{% url 'login' %}">{% csrf_token %}
+    <table>
+        <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+    </table>
  
- <form method="post" action="{% url 'login' %}">
- {% csrf_token %}
- <table>
- <tr>
-     <td>{{ form.username.label_tag }}</td>
-     <td>{{ form.username }}</td>
- </tr>
- <tr>
-     <td>{{ form.password.label_tag }}</td>
-     <td>{{ form.password }}</td>
- </tr>
- </table>
- 
- <input type="submit" value="login">
- <input type="hidden" name="next" value="{{ next }}">
+    <input type="submit" value="login">
+    <input type="hidden" name="next" value="{{ next }}">
  </form>
  
+ </div>
  {# Assumes you set up the password_reset view in your URLconf #}
  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
  

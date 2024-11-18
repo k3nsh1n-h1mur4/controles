@@ -5,13 +5,19 @@
 {% endblock %}
 
 {% block content %}
-{{ user}}
+<span> You are logged as : <b>{{ user }}</b></span>
 {% if form %}
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
     {{ form.as_p }}
+    <div id="btns-login">
         <div>
             <input type="submit" value="Registrar">
         </div>
+        <div>
+            <a href="{% url 'user_logout' %}">Salir del sistema</a>
+        </div>
+
+    </div>
     </form>
 {% endif %}
 {% endblock %}
