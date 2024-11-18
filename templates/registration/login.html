@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ {{ title }}
+ {% endblock %}
+
+ {% block content %}
+
+     <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.name }}">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+
+         <div>
+             <input type="submit" value="Login">
+         </div>
+
+
+        </form>
+        
+
+ {% endblock %}

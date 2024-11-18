@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if error %}
+                {{ error }}
+                {% else %}
+                    {{ '' }}    
+                {% endif %}
+            </div>
+        </div>
+    </div>
+   <div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <span>ID: <input type="text" class="form-control" placeholder="{{ ctx.0 }}"></span>
+            <span>Matrícula: <input type="text" class="form-control" placeholder="{{ ctx.1 }}"></span>
+            <span>Nombre: <input type="text" class="form-control" placeholder="{{ ctx.2 }}"></span><br><br>
+            <span>Foto Trabajador: <a href="{{ ctx.3 }}">{{ ctx.3 }}</a></span><br><br>
+            <span>Foto Firma: <a href="{{ ctx.4 }}">{{ ctx.4 }}</a></span><br><br> 
+            <span>Fecha Nacimiento: <input type="text" class="form-control" placeholder="{{ ctx.5 }}"></span>
+            <span>Categoría: <input type="text" class="form-control" placeholder="{{ ctx.6 }}"></span>
+            <span>Centro de Trabajo Actual: <input type="text" class="form-control" placeholder="{{ ctx.7 }}"></span>
+            <span>Adscripción Anterior: <input type="text" class="form-control" placeholder="{{ ctx.8 }}"></span>
+        </div>
+        <div class="col">
+            <span>Turno: <input type="text" class="form-control" placeholder="{{ ctx.9 }}"></span>
+            <span>Domicilio: <input type="text" class="form-control" placeholder="{{ ctx.10 }}"></span>
+            <span>Colonia: <input type="text" class="form-control" placeholder="{{ ctx.11 }}"></span>
+            <span>Municipio: <input type="text" class="form-control" placeholder="{{ ctx.12 }}"></span>
+            <span>Seccional: <input type="text" class="form-control" placeholder="{{ ctx.13 }}"></span>
+            <span># Célular: <input type="text" class="form-control" placeholder="{{ ctx.14 }}"></span>
+            <span>Correo: <input type="text" class="form-control" placeholder="{{ ctx.15 }}"></span>
+            <span>Responsable 100: <input type="text" class="form-control" placeholder="{{ ctx.16 }}"></span>
+            <span>Responsable 10: <input type="text" class="form-control" placeholder="{{ ctx.17 }}"></span>
+            <span>Participaciones Trabajador: <input type="text" class="form-control" placeholder="{{ ctx.18 }}"></span>
+            
+        </div>
+        <div class="col">
+            <span>Información Adicional: <input type="text" class="form-control" placeholder="{{ ctx.19 }}"></span>
+            <span>Descansos: <input type="text" class="form-control" placeholder="{{ ctx.20 }}"></span>
+            <span>Vacaciones Programadas: <input type="text" class="form-control" placeholder="{{ ctx.21 }}"></span>
+            <span>Servicio: <input type="text" class="form-control" placeholder="{{ ctx.22 }}"></span>
+            <span>Promoción: <input type="text" class="form-control" placeholder="{{ ctx.23 }}"></span>
+            <span>Movilización: <input type="text" class="form-control" placeholder="{{ ctx.24 }}"></span>
+            <span>Responsable Asignado: <input type="text" class="form-control" placeholder="{{ ctx.25 }}"></span>
+            <span>En Grupo: <input type="text" class="form-control" placeholder="{{ ctx.25 }}" readonly="True"></span>
+            <span>Asistencia Reunión: <input type="text" class="form-control" placeholder="{{ ctx.26 }}" readonly="True"></span>
+            <span>Status: <input type="text" class="form-control" placeholder="{{ ctx.27 }}" readonly="True"></span>
+        </div>
+    </div>
+   </div>
+   
+   <div id="btn-listado">
+    <div>
+    <a href="{% url 'list' %}" class="btn btn-primary">Volver a Listado</a>
+    </div>
+    <div>
+        <a href="{% url 'edit' ctx.0 %}" class="btn btn-secondary">Editar Registro</a>
+    </div>
+   </div>
+{% endblock %}

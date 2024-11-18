@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="{% url 'save_edit' ctx.0 %}" method="POST" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <div class="form-group">
+
+                        <label for="matricula">Matricula</label>
+                        <input type="text" name="matricula" class="form-control" value="{{ ctx.1 }}" placeholde="{{ ctx.1 }}" autofocus> 
+                     </div>
+                     <div class="form-group">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" name="nombre" value="{{ctx.2}}" placeholder="{{ctx.2}}" class="form-control" > 
+                     </div> 
+                     <div class="form-group">
+                        <label for="ftrab"></label>
+                        <input type="hidden" name="ftrab" value="{{ctx.3}}" placeholder="{{ctx.3}}" class="form-control" readonly > 
+                     </div>
+                     <div class="form-group">
+                        <label for="ffirma"></label>
+                        <input type="hidden" name="ffirma" value="{{ctx.4}}" placeholder="{{ctx.4}}" class="form-control" readonly > 
+                     </div>
+                     <div class="form-group">
+                        <label for="fnac">Fecha de Nacimiento</label>
+                        <input type="text" name="fnac" value="{{ ctx.5 }}" placeholder="{{ ctx.5 }}" class="form-control"> 
+                     </div>
+                     <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <input type="text" name="categoria" value="{{ ctx.6 }}" placeholder="{{ ctx.6 }}" class="form-control"> 
+                     </div>
+                     <div class="form-group">
+                        <label for="adsc_act">Adscripcion Actual</label>
+                        <input type="text" name="adsc_act" value="{{ ctx.7 }}" placeholder="{{ ctx.7 }}" class="form-control"> 
+                     </div>
+                     <div class="form-group">
+                        <label for="adsc_ant">Adscripcion Anterior</label>
+                        <input type="text" name="adsc_ant" value="{{ ctx.8 }}" placeholder="{{ ctx.8 }}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="turno">Turno</label>
+                        <input type="text" name="turno" value="{{ ctx.9 }}" placeholder="{{ ctx.9}}" class="form-control"> 
+                     </div>
+                     <div class="form-group">
+                        <label for="domicilio">Domicilio</label>
+                        <input type="text" name="domicilio" value="{{ctx.10}}" placeholder="{{ ctx.10 }}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="colonia">Colonia</label>
+                        <input type="text" name="colonia" value="{{ctx.11}}" placeholder="{{ctx.11}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="municipio">Municipio</label>
+                        <input type="text" name="municipio" value="{{ctx.12}}" placeholder="{{ctx.12}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="seccional">Seccional</label>
+                        <input type="text" name="seccional" value="{{ctx.13}}" placeholder="{{ctx.13}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="num_cel"># Celular</label>
+                        <input type="text" name="num_cel" value="{{ctx.14}}" placeholder="{{ctx.14}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" value="{{ctx.15}}" placeholder="{{ctx.15}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="Resp_100">Responsable 100</label>
+                        <input type="text" name="Resp_100" value="{{ctx.16}}" placeholder="{{ctx.16}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="Resp-10">Responsable 10</label>
+                        <input type="text" name="Resp_10" value="{{ctx.17}}" placeholder="{{ctx.17}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="part_trab">Participaciones del Trabajador</label>
+                        <input type="text" name="part_trab" value="{{ctx.18}}" placeholder="{{ctx.18}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="inf_adic">Informacion Adicional</label>
+                        <input type="text" name="inf_adic" value="{{ctx.19}}" placeholder="{{ctx.19}}" class="form-control > 
+                     </div>
+                     <div class="form-group">
+                        <label for="descansos">Descansos</label>
+                        <input type="text" name="descansos" value="{{ctx.20}}" placeholder="{{ctx.20}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="vac_prog">Vacaciones Programadas</label>
+                        <input type="text" name="vac_prog" value="{{ctx.21}}" placeholder="{{ctx.21}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="servicio">Servicio</label>
+                        <input type="text" name="servicio" value="{{ctx.22}}" placeholder="{{ctx.22}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="promocion">Promoción</label>
+                        <input type="text" name="promocion" value="{{ctx.23}}" placeholder="{{ctx.23}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="movilizacion">Movilizacion</label>
+                        <input type="text" name="movilizacion" value="{{ctx.24}}" placeholder="{{ctx.24}}" class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="asis_reu">Asistencia a Reunion</label>
+                        <input type="text" name="asis_reu" value="{{ctx.25}}" placeholder="{{ctx.25}}" readonly class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="voto_25Sept">Voto 25 Septiembre</label>
+                        <input type="text" name="voto_25Sept" value="{{ctx.26}}" placeholder="{{ctx.26}}" readonly class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="engrupo">En Grupo</label>
+                        <input type="text" name="engrupo" value="{{ctx.27}}" placeholder="{{ctx.27}}" readonly class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="status">Status</label>
+                        <input type="text" name="status" value="{{ctx.28}}" placeholder="{{ctx.28}}" readonly class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="inf_admin">Informacion Administracion</label>
+                        <input type="text" name="inf_admin" value="{{ctx.29}}" placeholder="{{ctx.29}}" readonly class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for="mi_resp"></label>
+                        <input type="hidden" name="mi_resp" value="{{ctx.30}}" placeholder="Admin" readonly class="form-control" > 
+                     </div>
+                     <div class="form-group">
+                        <label for=""></label>
+                        <input type="hidden" name="user_id_id" value="{{ctx.31}}" readonly class="form-control" > 
+                     </div>
+
+                     <div>
+                        <input type="submit" value="Guardar" class="btn btn-primary">
+                     </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

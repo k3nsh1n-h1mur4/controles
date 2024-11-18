@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if error %}
+                 <span id="error">{{ error}} </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3 id="validaM">Válidar Matrícula</h3>
+                <form action="" method="POST">{% csrf_token %}
+                    {{ form }}
+
+                    <div id="btns-validate">
+                    <div>
+                        <input type="submit" value="Validar" class="btn btn-primary">
+                    </div>
+                    <a>
+                        <a href="{% url 'list' %}" class="btn btn-secondary">Ir a Listado</a>
+                    </div>
+                    </div>
+                </form>    
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

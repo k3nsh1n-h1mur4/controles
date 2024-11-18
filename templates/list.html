@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <span><label>Usuario:</label> {{ user }} </span> <br><br>
+        <span><label>Total Registros: </label> {{ total }} </span>
+        <table class="table table-dark">
+          <tr>
+            <thead>
+              <th scope="col">ID</th>
+              <th scope="col">Matrícula</th>
+              <th scope="col">Nombre</th>
+            </thead>
+          </tr>
+          <tbody>
+            {% for register in page_obj %}           
+            <tr>
+              <th scope="row">{{ register.0 }}</th>
+              <td>{{ register.1 }} </td>
+              <td>{{ register.2 }} </td>
+              <td>
+                <div id="menu-btns">
+                  <div> <a href="{% url 'details' register.0 %}" class="btn btn-secondary">Ver Detalles</a></div>
+                  <div> <a href="{% url 'delete' register.0 %}" class="btn btn-danger">Eliminar</a></div>
+                  <!-- <div> <a href="{% url 'export_excel' %}" class="btn btn-danger">Exporta Excel</a></div> -->
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="pagination">
+          <span class="step-links">
+              {% if page_obj.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+      
+              <span class="current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+      
+              {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">next</a>
+                  <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+          </span>
+        </div>
+          <div id="btnsout">
+            <div> <a href="{% url 'export_excel' %}" class="btn btn-danger">Exporta Excel</a></div>
+            <div> <a href="{% url 'user_logout' %}" class="btn btn-primary">Salir</a></div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+{% endblock %}
