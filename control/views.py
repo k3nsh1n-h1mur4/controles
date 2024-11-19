@@ -55,7 +55,8 @@ def login(request):
     title = 'Login'
     error = None
     form = AuthenticationForm()
-
+    print(form.get_user()) 
+    return redirect(ValidateMatricula)
     """
     form = loginForm(request.POST or None)
     if request.method == 'POST':
@@ -75,6 +76,11 @@ def login(request):
     """
 
     return render(request, 'login.html', {'form': form, 'title': title, 'error': error})
+
+@login_required
+def aviso(request):
+    title = 'Aviso de Privacidad'
+    return render(request, 'aviso.html', {'title': title})
 
 
 @login_required

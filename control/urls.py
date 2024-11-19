@@ -17,4 +17,6 @@ urlpatterns = [
     path('validate_telefono/', views.ValidateTelefono, name='validate_telefono'),
     path('editar/<int:id>/', views.edit, name='edit'),
     path('save_edit/<int:id>/', views.save_edit, name='save_edit'),
+    path('aviso/', views.aviso, name='aviso'),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

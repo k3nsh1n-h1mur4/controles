@@ -32,7 +32,7 @@ class EstructuraModel(models.Model):
     class Meta:
         db_table = 'estructuratbl'
         
-    matriula = models.CharField(max_length=100, null=True)
+    matricula = models.CharField(max_length=100, null=True)
     nombre = models.CharField(max_length=100, null=True)
     ftrab = models.CharField(max_length=250, null=True)
     ffirma = models.CharField(max_length=250, null=True)
