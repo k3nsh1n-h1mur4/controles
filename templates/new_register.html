@@ -1,0 +1,27 @@
+{% extends 'base1.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="" method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     {% for field in form %}    
+                        <div class="form-group">
+                            <label for="{{ field.name }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                     {% endfor %}
+
+                     <div>
+                        <input type="submit" value="Registrar" class="btn btn-primary">
+                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

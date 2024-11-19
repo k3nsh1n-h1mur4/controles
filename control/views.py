@@ -1,3 +1,5 @@
+import os
+import glob
 import pathlib
 import sqlite3
 import bcrypt
@@ -6,7 +8,9 @@ import pandas as pd
 from openpyxl import Workbook
 from .connection import Connection
 
+from django.conf import settings
 from django.urls import reverse
+from django.http import FileResponse, JsonResponse
 from django.core.paginator import Paginator
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import AuthenticationForm
@@ -16,7 +20,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView, LogoutView
 
 import control.views
-from .forms import RegistrationForm, loginForm, ValidateMatriculaForm, ValidateTelefonoForm, EstructuraEdicionForm
+from .forms import RegistrationForm, loginForm, ValidateMatriculaForm, ValidateTelefonoForm, EstructuraEdicionForm, EstructuraRegistrationForm
 from .models import User
 
 # Create your views here.
@@ -291,7 +295,7 @@ def export_excel(request):
         if ctx == None:
             return
         else:
-            createdFile = glob.iglob(os.path.join(BASE_DIR, '*.xlsx'), recursive=True)
+            createdFile = glob.iglob(os.path.join(settings.BASE_DIR, '*.xlsx'), recursive=True)
             last_file = max(createdFile, key=os.path.getctime)
             response = FileResponse(open(last_file, 'rb'), as_attachment=True)
             return response

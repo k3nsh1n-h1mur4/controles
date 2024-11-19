@@ -80,6 +80,13 @@
 #login-header {
   height: 10vh;
   color:#357ae8;
+  background-image: url('./imagenes/alonso1.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-listado {
   display: flex;
   justify-content: center;
   align-items: center;

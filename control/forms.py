@@ -763,7 +763,7 @@ class EstructuraRegistrationForm(forms.Form):
     engrupo = forms.CharField(label='En Grupo', widget=forms.TextInput(attrs={'class' : 'form-control', 'value': 'SD', 'readonly': 'True'}), required = False)
     status = forms.CharField(label='Status', widget=forms.TextInput(attrs={'class' : 'form-control', 'readonly' : 'True', 'value' : 'S/D', 'readonly' : 'True'}), required = False)
     inf_admin = forms.CharField(label='Informacion Administrador', widget=forms.TextInput(attrs={'class' : 'form-control', 'readonly' : 'True', 'value' : 'S/D', 'readonly' : 'True'}), required = False)
-    mi_resp = forms.CharField(label='Responsable Asignado', widget=forms.TextInput(attrs={'class' : 'form-control'}), required = False)
+    mi_resp = forms.CharField(label='Responsable Asignado', widget=forms.TextInput(attrs={'class' : 'form-control', 'readonly' : 'True'}), required = False)
 
 
 
