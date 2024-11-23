@@ -99,6 +99,10 @@
   flex-direction: column;
 }
 
+#aviso h1 {
+  color: #fff;
+}
+
 #validate {
   display: flex;
   flex-direction: row; 
@@ -114,6 +118,11 @@ article {
   border-radius: 5px;
   padding: 25px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#img-aviso {
+  background-image: url('./imagenes/alonso2.jpg');  
+  background-size: cover;
 }
 
 /*#validate a {

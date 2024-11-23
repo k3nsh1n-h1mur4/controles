@@ -18,5 +18,6 @@ urlpatterns = [
     path('editar/<int:id>/', views.edit, name='edit'),
     path('save_edit/<int:id>/', views.save_edit, name='save_edit'),
     path('aviso/', views.aviso, name='aviso'),
+    path("search/<str:q>/", views.search, name="search"),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

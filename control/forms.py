@@ -773,6 +773,9 @@ class ValidateMatriculaForm(forms.Form):
     
 class ValidateTelefonoForm(forms.Form):
     num_cel = forms.CharField(label='Teléfono', widget=forms.TextInput(attrs={'class' : 'form-control', 'autofocus': 'True'}), required = False)
+class SearchForm(forms.Form):
+    q = forms.CharField(label='Buscar', widget=forms.TextInput(attrs={'class' : 'form-control', 'autofocus': 'True'}), required = False)
+
 
 
 

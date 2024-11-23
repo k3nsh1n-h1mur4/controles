@@ -20,7 +20,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView, LogoutView
 
 import control.views
-from .forms import RegistrationForm, loginForm, ValidateMatriculaForm, ValidateTelefonoForm, EstructuraEdicionForm, EstructuraRegistrationForm
+from .forms import RegistrationForm, loginForm, ValidateMatriculaForm, ValidateTelefonoForm, EstructuraEdicionForm, EstructuraRegistrationForm, SearchForm
 from .models import User
 
 # Create your views here.
@@ -386,4 +386,36 @@ def save_edit(request, id):
         #return JsonResponse({"data" : "Registro Realizado"})
         
     return HttpResponse('Registro Editado Correctamente')    
-    #return render(request, 'new_register.html', {'title': title})          
+    #return render(request, 'new_register.html', {'title': title})
+    # 
+
+
+@login_required
+def search(request):
+    title = 'Buscar Registros'
+    error = None
+    if request.method == 'GET':
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            try:
+                q = request.GET.get('q', None)
+                print(q)
+                if q:
+                    print(q)
+                    cnx = Connection.getConnection()
+                    cur = cnx.cursor()
+                    cur.execute("SELECT * FROM estructuratbl WHERE matricula={0} AND userId_id={1}".format(q, request.user.id))
+                    data = cur.fetchone()
+                    cnx.commit()
+                    print(data)
+                
+                    return render(request, 'list.html', {'title': title, 'error': error, 'form': form, 'data': data})
+                else:
+                    return redirect('list')
+            except sqlite3.Error as e:
+                raise(e)
+        else:
+            form = SearchForm()
+            print(form.errors)
+            #return render(request, 'list.html', {'title': title, 'error': error, 'form': form})
+    return render(request, 'list.html', {'title': title, 'error': error, 'form': form})
